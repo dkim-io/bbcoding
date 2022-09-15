@@ -10,13 +10,11 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
-
 from pathlib import Path
 from urllib.parse import urlparse
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -33,7 +31,6 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
 ]
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -44,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_extensions',
+    'mymodels',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -76,7 +75,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'assessment.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 db_config = urlparse(os.getenv('DATABASE_URI'))
@@ -90,7 +88,6 @@ DATABASES = {
         'PASSWORD': db_config.password
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -110,7 +107,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
@@ -123,7 +119,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
