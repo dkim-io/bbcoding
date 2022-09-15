@@ -105,3 +105,15 @@ migrations. This does **not** seed any users or super users.
 
 When adding a dependency to the `pipfile`, make sure to rerun `./scripts/run-local`, or run
 `docker-compose build`, or Docker will not properly pull in the new dep.
+
+### Dave's Notes
+The three endpoints created are:
+- `127.0.0.1/item` [POST] For uploading JSON to create records
+- `127.0.0.1/item/<object_id>` [GET] To retrieve a record by its object_id
+- `127.0.0.1/list?key=<some_key>&value=<some_value>` [GET] To filter by key and value
+
+A few notes:
+- The schema validation does not seem to work for the nested array types for some reason. Hence, one of the sample files passes the validation when it should not. I've added a generic error handler in the update to handle the case but there could be a better implementation.
+- The search does not distinguish the type for the `value` parameter. In other words it treats all the inputs as string. So numbers, nulls, and booleans are not taken into consideration.
+- The overall exercise took more tha I would have liked to. Most of the time has been spent on fixing my Python (pip, pipenv) correctly configured. Urgh! the joys of computing at times.
+
